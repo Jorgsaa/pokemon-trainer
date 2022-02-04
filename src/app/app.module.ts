@@ -8,6 +8,8 @@ import { CataloguePage } from './catalogue/catalogue.page';
 import { TrainerPage } from './trainer/trainer.page';
 import { DetailsPage } from './details/details.page';
 import { NotFoundPage } from './not-found/not-found.page';
+import { PokemonListItemComponent } from './shared/pokemon-list-item/pokemon-list-item.component';
+import { PokemonListComponent } from './shared/pokemon-list/pokemon-list.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import { NotFoundPage } from './not-found/not-found.page';
     CataloguePage,
     TrainerPage,
     DetailsPage,
-    NotFoundPage
+    NotFoundPage,
+    PokemonListItemComponent,
+    PokemonListComponent
   ],
   imports: [
     BrowserModule,
