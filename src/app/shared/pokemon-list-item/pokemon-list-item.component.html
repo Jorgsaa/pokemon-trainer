@@ -1,11 +1,14 @@
 <div class="pokemon-container">
+  <div class="pokemon-top-bar">
+    #{{ (pokemonDetails$ | async)?.id  }}
+  </div>
   <div class="pokemon-sprite-container">
     <img
       class="pokemon-sprite"
       [src]="(pokemonDetails$ | async)?.sprites?.front_default"
     />
   </div>
-  <div class="pokemon-bar">
+  <div class="pokemon-bottom-bar">
     <img class="pokemon-info-icon" src="assets/info.png" />
     <div class="pokemon-name">{{ pokemon.name }}</div>
     <img
