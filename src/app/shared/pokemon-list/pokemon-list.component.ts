@@ -10,7 +10,7 @@ import { PokemonService } from 'src/app/services/pokemon.service';
 })
 export class PokemonListComponent implements OnInit {
 
-  @Input() pageLength: number = 20
+  @Input() pageLength: number = 50
 
   pokemon: Pokemon[] = []
 
