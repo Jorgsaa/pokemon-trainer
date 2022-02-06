@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable, of } from 'rxjs';
+import { Pokemon } from 'src/app/models';
+import { PokemonService } from 'src/app/services/pokemon.service';
 
 @Component({
   selector: 'app-pokemon-list',
@@ -7,9 +10,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PokemonListComponent implements OnInit {
 
-  constructor() { }
+  pokemon$: Observable<Pokemon[]> = of([])
+
+  constructor(private pokemonService: PokemonService) { }
 
   ngOnInit(): void {
+    this.pokemon$ = this.pokemonService.fetch()
   }
 
 }
