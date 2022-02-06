@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { debounceTime, Observable, of } from 'rxjs';
 import { Pokemon } from 'src/app/models';
 import { PokemonService } from 'src/app/services/pokemon.service';
 
@@ -10,11 +9,15 @@ import { PokemonService } from 'src/app/services/pokemon.service';
 })
 export class PokemonListComponent implements OnInit {
 
-  @Input() pageLength: number = 20
+  @Input() pageLength: number = 50
 
-  pokemon$: Pokemon[] = []
+  pokemon: Pokemon[] = []
 
   offset: number = 0
+
+  distance: number = 1
+
+  throttle: number = 0
 
   constructor(private pokemonService: PokemonService) { }
 
@@ -25,8 +28,12 @@ export class PokemonListComponent implements OnInit {
 
   loadMore(): void {
     this.pokemonService.fetch(this.pageLength, this.offset)
-    .subscribe(data => this.pokemon$ = [...this.pokemon$, ...data])
+    .subscribe(data => this.pokemon.push(...data))
     this.offset += this.pageLength
+  }
+
+  onScroll(): void {
+    this.loadMore()
   }
 
 }

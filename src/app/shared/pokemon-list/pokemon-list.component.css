@@ -1,5 +1,6 @@
 .pokemon-list-container {
-    background-color: rgb(224, 224, 224); 
+    margin: 0 auto;
+    align-content: center;
 }
 
 .pokemon-list {
