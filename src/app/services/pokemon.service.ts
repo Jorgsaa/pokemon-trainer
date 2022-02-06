@@ -5,7 +5,7 @@ import { Pokemon, PokemonDetails } from '../models';
 import { Response } from '../models/response.model';
 
 const URL = 'https://pokeapi.co/api/v2/pokemon';
-const SESSION_STORAGE_POKEMON_DATA_KEY = 'pokemon';
+const POKEMON_DATA_KEY = 'pokemon';
 
 @Injectable({
   providedIn: 'root',
@@ -55,9 +55,7 @@ export class PokemonService {
    * @returns A list of Pokémon
    */
   fetchSession(): Pokemon[] {
-    const pokemonData = sessionStorage.getItem(
-      SESSION_STORAGE_POKEMON_DATA_KEY
-    );
+    const pokemonData = sessionStorage.getItem(POKEMON_DATA_KEY);
 
     return JSON.parse(pokemonData ?? '[]');
   }
