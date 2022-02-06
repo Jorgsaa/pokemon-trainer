@@ -20,6 +20,7 @@ export class PokemonListComponent implements OnInit {
     this.loadMore()
   }
 
+  // TODO: append newly loaded pokemon to the previously loaded
   loadMore(): void {
     this.pokemon$ = this.pokemonService.fetch(20, this.offset)
     this.pokemon$.subscribe({
