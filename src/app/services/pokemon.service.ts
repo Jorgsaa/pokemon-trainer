@@ -5,7 +5,7 @@ import { Pokemon, PokemonDetails } from '../models';
 import { Response } from '../models/response.model';
 
 const URL = 'https://pokeapi.co/api/v2/pokemon';
-const SESSION_STORAGE_POKEMON_DATA_KEY = 'pokemon';
+const POKEMON_DATA_KEY = 'pokemon';
 
 @Injectable({
   providedIn: 'root',
@@ -23,20 +23,27 @@ export class PokemonService {
   fetch(limit: number = 20, offset: number = 0): Observable<Pokemon[]> {
     const sessionPokemon = this.fetchSession();
 
-    if (sessionPokemon.length >= offset + limit) return of(sessionPokemon);
+    if (sessionPokemon.length >= offset + limit)
+      return of(sessionPokemon.slice(offset, offset + limit));
+
+    console.log('Not in session storage, fetching from API...');
 
     const fetchedPokemon = this.http
       .get(`${URL}/?limit=${limit}&offset=${offset}`, {
         headers: { 'Access-Control-Allow-Origin': '*' },
       })
       .pipe(
-        map(response => response as Response<Pokemon[]>),
-        map(pokemonResponse => pokemonResponse.results)
+        map((response) => response as Response<Pokemon[]>),
+        map((pokemonResponse) => pokemonResponse.results)
       );
 
     fetchedPokemon.subscribe({
       next: (pokemon) => {
-        sessionStorage.setItem('pokemon', JSON.stringify(pokemon));
+        sessionStorage.setItem(
+          POKEMON_DATA_KEY,
+          JSON.stringify([...sessionPokemon, ...pokemon])
+        );
+        console.log('Session:', sessionStorage.getItem(POKEMON_DATA_KEY));
       },
     });
 
@@ -48,9 +55,7 @@ export class PokemonService {
    * @returns A list of Pokémon
    */
   fetchSession(): Pokemon[] {
-    const pokemonData = sessionStorage.getItem(
-      SESSION_STORAGE_POKEMON_DATA_KEY
-    );
+    const pokemonData = sessionStorage.getItem(POKEMON_DATA_KEY);
 
     return JSON.parse(pokemonData ?? '[]');
   }
