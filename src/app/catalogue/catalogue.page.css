@@ -1,0 +1,10 @@
+.catalogue-pokemon-list-container {
+    margin: 0 auto;
+    text-align: center;
+}
+
+.catalogue-pokemon-list {
+    display: inline-block;
+    max-width: 1200px;
+    min-width: 35vw;
+}
