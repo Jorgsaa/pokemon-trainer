@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Pokemon } from 'src/app/models';
+import { Observable, of } from 'rxjs';
+import { Pokemon, PokemonDetails } from 'src/app/models';
+import { PokemonService } from 'src/app/services/pokemon.service';
 
 @Component({
   selector: 'app-pokemon-list-item',
@@ -7,21 +9,15 @@ import { Pokemon } from 'src/app/models';
   styleUrls: ['./pokemon-list-item.component.css'],
 })
 export class PokemonListItemComponent implements OnInit {
-  @Input() pokemon: Pokemon = {
-    name: 'Ditto',
-    id: 132,
-    sprites: {
-      front_default:
-        'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png',
-    },
-    abilities: [],
-    stats: [],
-    types: [],
-  };
+  @Input() pokemon: Pokemon = { name: '', url: '' };
+
+  pokemonDetails$: Observable<PokemonDetails> = of();
 
   hasObtained: boolean = true;
 
-  constructor() {}
+  constructor(private pokemonService: PokemonService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.pokemonDetails$ = this.pokemonService.fetchDetails(this.pokemon.name);
+  }
 }
