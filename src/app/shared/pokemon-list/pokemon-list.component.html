@@ -1,6 +1,16 @@
-<div class="pokemon-list-container">
-    <div class="pokemon-list">
-        <app-pokemon-list-item *ngFor="let pokemonElement of pokemon" [pokemon]="pokemonElement" class="pokemon-list-item"></app-pokemon-list-item>
-    </div>
-    <button (click)="loadMore()" class="pokemon-list-button">Load more</button>
+<div
+  class="pokemon-list-container"
+  infinite-scroll
+  [infiniteScrollDistance]="distance"
+  [infiniteScrollThrottle]="throttle"
+  (scrolled)="onScroll()"
+>
+  <div class="pokemon-list">
+    <app-pokemon-list-item
+      *ngFor="let pokemonElement of pokemon"
+      [pokemon]="pokemonElement"
+      class="pokemon-list-item"
+    ></app-pokemon-list-item>
+  </div>
+  <button (click)="loadMore()" class="pokemon-list-button">Load more</button>
 </div>
