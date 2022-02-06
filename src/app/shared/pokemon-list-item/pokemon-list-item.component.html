@@ -1,6 +1,9 @@
 <div class="pokemon-container">
   <div class="pokemon-sprite-container">
-    <img class="pokemon-sprite" [src]="pokemon.sprites.front_default" />
+    <img
+      class="pokemon-sprite"
+      [src]="(pokemonDetails$ | async)?.sprites?.front_default"
+    />
   </div>
   <div class="pokemon-bar">
     <img class="pokemon-info-icon" src="assets/info.png" />
