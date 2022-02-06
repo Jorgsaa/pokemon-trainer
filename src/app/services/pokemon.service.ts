@@ -23,7 +23,7 @@ export class PokemonService {
   fetch(limit: number = 20, offset: number = 0): Observable<Pokemon[]> {
     const sessionPokemon = this.fetchSession();
 
-    if (sessionPokemon.length >= limit) return of(sessionPokemon);
+    if (sessionPokemon.length >= offset + limit) return of(sessionPokemon);
 
     const fetchedPokemon = this.http
       .get(`${URL}/?limit=${limit}&offset=${offset}`, {
