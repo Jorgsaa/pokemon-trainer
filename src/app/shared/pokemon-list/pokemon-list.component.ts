@@ -10,12 +10,23 @@ import { PokemonService } from 'src/app/services/pokemon.service';
 })
 export class PokemonListComponent implements OnInit {
 
-  pokemon$: Observable<Pokemon[]> = of([])
+  pokemon$: Observable<Pokemon[]> = of()
+
+  offset: number = 0
 
   constructor(private pokemonService: PokemonService) { }
 
   ngOnInit(): void {
-    this.pokemon$ = this.pokemonService.fetch()
+    this.loadMore()
+  }
+
+  // TODO: append newly loaded pokemon to the previously loaded
+  loadMore(): void {
+    this.pokemon$ = this.pokemonService.fetch(20, this.offset)
+    this.pokemon$.subscribe({
+      next: console.log
+    })
+    this.offset += 20
   }
 
 }

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { map, Observable, of } from 'rxjs';
+import { from, map, mergeMap, Observable, of } from 'rxjs';
 import { Pokemon, PokemonDetails } from '../models';
 import { Response } from '../models/response.model';
 
@@ -23,7 +23,7 @@ export class PokemonService {
   fetch(limit: number = 20, offset: number = 0): Observable<Pokemon[]> {
     const sessionPokemon = this.fetchSession();
 
-    if (sessionPokemon.length >= limit) return of(sessionPokemon);
+    if (sessionPokemon.length >= offset + limit) return of(sessionPokemon);
 
     const fetchedPokemon = this.http
       .get(`${URL}/?limit=${limit}&offset=${offset}`, {

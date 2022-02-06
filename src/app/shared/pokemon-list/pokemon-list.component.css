@@ -1,11 +1,19 @@
+.pokemon-list-container {
+    background-color: rgb(224, 224, 224); 
+}
+
 .pokemon-list {
-    background-color: blue;
     display: flex; 
     flex-wrap: wrap;
-    background-color: rgb(224, 224, 224); 
     justify-content: space-around;
 }
 
 .pokemon-list-item {
    padding: 1rem; 
 }
+
+.pokemon-list-button {
+    padding: 0 1rem;
+    text-align: center;
+    margin: 0 auto;
+ }
