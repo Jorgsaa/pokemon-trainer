@@ -10,6 +10,7 @@ import { DetailsPage } from './details/details.page';
 import { NotFoundPage } from './not-found/not-found.page';
 import { PokemonListItemComponent } from './shared/pokemon-list-item/pokemon-list-item.component';
 import { PokemonListComponent } from './shared/pokemon-list/pokemon-list.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { PokemonListComponent } from './shared/pokemon-list/pokemon-list.compone
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
