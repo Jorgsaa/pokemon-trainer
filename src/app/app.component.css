@@ -1,0 +1,24 @@
+header {
+    display: grid;
+    grid-template-columns: 1fr auto auto auto;
+}
+
+a {
+    padding: 10px;
+    align-self: center;
+    border: 1px solid;
+    margin: 0 10px;
+    font-size: 20px;
+    text-decoration: none;
+    color: black;
+    background: rgb(235, 233, 233);
+    border-radius: 10px;
+}
+
+a:hover {
+    background: rgb(192, 189, 189);
+}
+
+.active-link {
+    background: rgb(192, 189, 189);
+}
