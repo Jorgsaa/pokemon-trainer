@@ -12,7 +12,7 @@ export class PokemonListComponent implements OnInit {
 
   @Input() pageLength: number = 20
 
-  pokemon$: Pokemon[] = []
+  pokemon: Pokemon[] = []
 
   offset: number = 0
 
@@ -25,7 +25,7 @@ export class PokemonListComponent implements OnInit {
 
   loadMore(): void {
     this.pokemonService.fetch(this.pageLength, this.offset)
-    .subscribe(data => this.pokemon$.push(...data))
+    .subscribe(data => this.pokemon.push(...data))
     this.offset += this.pageLength
   }
 
