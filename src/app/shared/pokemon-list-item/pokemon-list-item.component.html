@@ -8,7 +8,7 @@
   </div>
   <div class="pokemon-bottom-bar">
     <img class="pokemon-info-icon" src="assets/info.png" />
-    <div class="pokemon-name">{{ pokemon.name }}</div>
+    <div class="pokemon-name">{{ pokemon.name | titlecase }}</div>
     <img
       [style.visibility]="hasObtained ? 'visible' : 'hidden'"
       class="pokemon-pokeball-icon"
