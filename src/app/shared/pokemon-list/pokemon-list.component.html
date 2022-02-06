@@ -1,3 +1,6 @@
-<div class="pokemon-list">
-    <app-pokemon-list-item *ngFor="let pokemon of pokemon$ | async" [pokemon]="pokemon" class="pokemon-list-item"></app-pokemon-list-item>
+<div class="pokemon-list-container">
+    <div class="pokemon-list">
+        <app-pokemon-list-item *ngFor="let pokemon of pokemon$ | async" [pokemon]="pokemon" class="pokemon-list-item"></app-pokemon-list-item>
+    </div>
+    <button class="pokemon-list-button">Load more</button>
 </div>
