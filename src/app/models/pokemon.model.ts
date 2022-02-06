@@ -2,7 +2,7 @@ import { Ability } from "./ability.model";
 import { Stat } from "./stat.model";
 import { Type } from "./type.model";
 
-export interface Pokemon {
+export interface PokemonDetails {
     name: string
     id: number
     sprites: {
