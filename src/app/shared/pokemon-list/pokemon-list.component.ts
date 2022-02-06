@@ -25,7 +25,7 @@ export class PokemonListComponent implements OnInit {
 
   loadMore(): void {
     this.pokemonService.fetch(this.pageLength, this.offset)
-    .subscribe(data => this.pokemon$ = [...this.pokemon$, ...data])
+    .subscribe(data => this.pokemon$.push(...data))
     this.offset += this.pageLength
   }
 
