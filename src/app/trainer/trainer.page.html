@@ -1,2 +1,10 @@
-<h1>Trainer</h1>>
-<app-pokemon-list></app-pokemon-list>
+<h1>Trainer</h1>
+<section *ngIf="user">
+    <h2>{{ user.username }}</h2>
+</section>
+<main *ngIf="pokemons">
+    <ul>
+        <li *ngFor="let pokemon of pokemons">{{ pokemon }}</li>
+    </ul>
+    <app-pokemon-list></app-pokemon-list>
+</main>
