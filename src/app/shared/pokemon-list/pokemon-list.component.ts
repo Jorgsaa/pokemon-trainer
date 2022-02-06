@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Pokemon } from 'src/app/models';
 import { PokemonService } from 'src/app/services/pokemon.service';
 
@@ -9,31 +9,20 @@ import { PokemonService } from 'src/app/services/pokemon.service';
 })
 export class PokemonListComponent implements OnInit {
 
-  @Input() pageLength: number = 50
+  @Input() pokemon: Pokemon[] = []
 
-  pokemon: Pokemon[] = []
+  @Input() distance: number = 0
 
-  offset: number = 0
+  @Input() throttle: number = 0
 
-  distance: number = 1
-
-  throttle: number = 0
+  @Output() onScroll: EventEmitter<string> = new EventEmitter();
 
   constructor(private pokemonService: PokemonService) { }
 
   ngOnInit(): void {
-    this.offset = 0
-    this.loadMore()
   }
 
-  loadMore(): void {
-    this.pokemonService.fetch(this.pageLength, this.offset)
-    .subscribe(data => this.pokemon.push(...data))
-    this.offset += this.pageLength
-  }
 
-  onScroll(): void {
-    this.loadMore()
-  }
+
 
 }

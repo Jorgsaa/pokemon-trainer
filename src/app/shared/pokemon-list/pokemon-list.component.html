@@ -3,7 +3,7 @@
   infinite-scroll
   [infiniteScrollDistance]="distance"
   [infiniteScrollThrottle]="throttle"
-  (scrolled)="onScroll()"
+  (scrolled)="onScroll.emit()"
 >
   <div class="pokemon-list">
     <app-pokemon-list-item
@@ -12,5 +12,4 @@
       class="pokemon-list-item"
     ></app-pokemon-list-item>
   </div>
-  <button (click)="loadMore()" class="pokemon-list-button">Load more</button>
 </div>
