@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { debounceTime, Observable, of } from 'rxjs';
 import { Pokemon } from 'src/app/models';
 import { PokemonService } from 'src/app/services/pokemon.service';
 
@@ -12,22 +12,20 @@ export class PokemonListComponent implements OnInit {
 
   @Input() pageLength: number = 20
 
-  pokemon$: Observable<Pokemon[]> = of()
+  pokemon$: Pokemon[] = []
 
   offset: number = 0
 
   constructor(private pokemonService: PokemonService) { }
 
   ngOnInit(): void {
+    this.offset = 0
     this.loadMore()
   }
 
-  // TODO: append newly loaded pokemon to the previously loaded
   loadMore(): void {
-    this.pokemon$ = this.pokemonService.fetch(this.pageLength, this.offset)
-    this.pokemon$.subscribe({
-      next: console.log
-    })
+    this.pokemonService.fetch(this.pageLength, this.offset)
+    .subscribe(data => this.pokemon$ = [...this.pokemon$, ...data])
     this.offset += this.pageLength
   }
 
