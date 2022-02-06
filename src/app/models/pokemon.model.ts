@@ -12,3 +12,8 @@ export interface PokemonDetails {
     stats: Array<{ base_stat: number, effort: number, stat: Stat }>
     types: Array<{ slot: number, type: Type }>
 }
+
+export interface Pokemon {
+    name: string
+    url: string
+}
