@@ -1,4 +1,12 @@
 <h1>Catalogue</h1>
-<div class="catalogue-pokemon-list-container">
-    <app-pokemon-list class="catalogue-pokemon-list"></app-pokemon-list>
+<div
+  class="catalogue-pokemon-list-container"
+>
+  <app-pokemon-list
+    class="catalogue-pokemon-list"
+    [pokemon]="cataloguePokemon"
+    [distance]="0"
+    [throttle]="0"
+    (onScroll)="loadMore()"
+  ></app-pokemon-list>
 </div>
