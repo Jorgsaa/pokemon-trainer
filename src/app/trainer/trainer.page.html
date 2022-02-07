@@ -3,9 +3,6 @@
     <h2>{{ user.username }}</h2>
 </section>
 <main *ngIf="pokemons">
-    <ul>
-        <li *ngFor="let pokemon of pokemons">{{ pokemon }}</li>
-    </ul>
     <app-pokemon-list
     class="catalogue-pokemon-list"
     [pokemon]="cataloguePokemon"

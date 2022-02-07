@@ -11,6 +11,11 @@ import { UserService } from '../services/users.service';
 })
 export class TrainerPage implements OnInit {
 
+  @Output() cataloguePokemon: Pokemon[] = []
+
+  pageLength: number = 50
+  offset: number = 0
+
   constructor(
     private readonly userSecvice: UserService,
     private readonly userLoggedInService: UserLoggedInService,
@@ -18,11 +23,11 @@ export class TrainerPage implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    // Temporary for testing. User will be sett when the login function works
+    // Temporary for testing. User will already be sett when the login function works
     this.userSecvice.fetchContacts();
     this.userLoggedInService.setUser(this.userSecvice.users()[0])
 
-    // For pokemon list
+    // Manually load pokemons the 1st time
     this.loadMore()
   }
 
@@ -33,12 +38,6 @@ export class TrainerPage implements OnInit {
   get pokemons(): string[] | undefined {
     return this.userLoggedInService.pokemons()
   }
-
-  //POKEMON-LIST
-  @Output() cataloguePokemon: Pokemon[] = []
-  
-  pageLength: number = 50
-  offset: number = 0
 
 // Convert every pokemon the user owns to a Pokemon-object (stop at the specified pageLength)
 // Then insert these pokemons into the list of pokemons that will be displayed
