@@ -23,7 +23,6 @@ export class TrainerPage implements OnInit {
     this.userLoggedInService.setUser(this.userSecvice.users()[0])
 
     // For pokemon list
-    this.offset = 0
     this.loadMore()
   }
 
@@ -35,45 +34,26 @@ export class TrainerPage implements OnInit {
     return this.userLoggedInService.pokemons()
   }
 
-  //HHHJDKLHJHKLHDJKLHJKLHJKLHJ POKEMON-LIST
+  //POKEMON-LIST
   @Output() cataloguePokemon: Pokemon[] = []
   
   pageLength: number = 50
   offset: number = 0
-  
 
-
-  loadMore1(): void {
-    this.pokemonService.fetch(this.pageLength, this.offset)
-    .subscribe(data => this.cataloguePokemon.push(...data))
-    this.offset += this.pageLength
-    console.log(this.offset);
-  }
-
+// Convert every pokemon the user owns to a Pokemon-object (stop at the specified pageLength)
+// Then insert these pokemons into the list of pokemons that will be displayed
+// (next time this function is triggered, load the next specified number of pokemons (pageLength))
   loadMore(): void {
     const pokemons = this.userLoggedInService.pokemons()
     if (pokemons) {
-      // for every pokemon the user owns
-      for (const pokemonName of pokemons) {
-        const newPokemon: Pokemon = {
+      for (let index = this.offset, iterationCounter = 0; index < pokemons.length && iterationCounter < this.pageLength; index++, iterationCounter++, this.offset++) {
+        const pokemonName = pokemons[index]
+        const currentPokemon: Pokemon = {
           name: pokemonName,
-          url: "",
+          url: "", // Is this needed?
         }
-        // insert pokemon-object into the list of pokemons that will be displayed
-        this.cataloguePokemon.push(newPokemon)
-        // stop at the specified pageLength
+        this.cataloguePokemon.push(currentPokemon)
       }
     }
-    
-      
-      
-      
-
-    // Next time this function is triggered, load the next specified number of pokemons
-    
-    /* this.pokemonService.fetch(this.pageLength, this.offset)
-    .subscribe(data => this.cataloguePokemon.push(...data))
-    this.offset += this.pageLength
-    console.log(this.offset); */
   }
 }
