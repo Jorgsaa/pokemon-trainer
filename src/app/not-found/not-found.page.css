@@ -1,6 +1,6 @@
 .not-found-error-code {
     display: grid;
-    grid-template-columns: auto auto auto;
+    grid-template-columns: 1fr 1fr 1fr;
 }
 
 .first-4-of-404, .second-4-of-404 {
@@ -17,8 +17,50 @@
     justify-self: start;
 }
 
-.not-found-error-code img {
+.back-to-home-btn {
     align-self: center;
-    height: 260px;
+    height: 250px;
+    justify-self: center;
+    grid-column: 2;
+    font-size: 25px;
+    text-decoration: none;
+    color: black;
+    border-radius: 200px;
+}
+
+.back-to-home-btn:hover {
+    background: #888888;
+    box-shadow: 5px 10px 10px #888888;
+    height: 253px;
+    margin-bottom: 10px;
+}
+
+.not-found-error-code a img {
+    align-self: center;
+    height: inherit;
+    justify-self: center;
+    border-radius: 200px;
+}
+
+main {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+}
+
+.page-not-found_info {
+    justify-self: center;
+    align-self: center;
+    font-size: 40px;
+    grid-column: 2;
+}
+
+.page-not-found_mascot {
+    height: 140px;
+    margin-left: 20px;
+}
+
+.back-to-home-btn_specification {
+    font-size: 25px;
+    grid-column: 1/4;
     justify-self: center;
 }
