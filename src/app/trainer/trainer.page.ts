@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../models';
 import { UserLoggedInService } from '../services/user-logged-in.service';
-import { UserService } from '../services/users.service';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-trainer',
@@ -17,8 +17,8 @@ export class TrainerPage implements OnInit {
 
   ngOnInit(): void {
     // Temporary for testing. User will be sett when the login function works
-    this.userSecvice.fetchContacts();
-    this.userLoggedInService.setUser(this.userSecvice.users()[0])
+    //this.userSecvice.fetchContacts();
+    //this.userLoggedInService.setUser(this.userSecvice.users()[0])
   }
 
   get user(): User | undefined {
