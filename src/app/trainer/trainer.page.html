@@ -1,8 +1,8 @@
-<h1>Trainer</h1>
-<section *ngIf="user">
-    <h2>{{ user.username }}</h2>
+<section>
+    <h1>Trainer</h1>
+    <h2>{{ user?.username }}</h2>
 </section>
-<main *ngIf="pokemons">
+<main>
     <app-pokemon-list
     class="catalogue-pokemon-list"
     [pokemon]="cataloguePokemon"
@@ -10,4 +10,5 @@
     [throttle]="100"
     (onScroll)="loadMore()"
     ></app-pokemon-list>
+    <a *ngIf="pokemons?.length === 0" role='button' routerLink="/catalogue">You have no Pokémons. Go to the catalogue to catch 'em all!</a>
 </main>

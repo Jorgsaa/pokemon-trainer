@@ -21,10 +21,6 @@ export class TrainerPage implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    // Temporary for testing. User will already be sett when the login function works
-    this.userService.fetchContacts();
-    this.userService.setUser(this.userService.users()[0])
-
     // Manually load pokemons the 1st time
     this.loadMore()
   }
