@@ -11,6 +11,7 @@ const userStorageKey = "user";
   providedIn: 'root'
 })
 export class UserService {
+  private _users: User[] = [];
   private _user?: User;
 
   constructor(
@@ -56,6 +57,7 @@ export class UserService {
   }
 
   public logout() {
+    this._user = undefined;
     localStorage.removeItem(userStorageKey);
   }
 
@@ -71,17 +73,20 @@ export class UserService {
   */
   public getCurrentUserPokemons(): string[] | undefined {
     return this._user?.pokemon;
-  
   }
-  
+
   /*
-    Get all users from API.
+    VVVVV Temporary for testing purposes VVVVV
   */
-  /*public fetchContacts() {
+  public setUser(user: User) {
+    this._user = user;
+  }
+
+  public fetchContacts() {
     this.http.get<User[]>('https://jorgsaa-noroff-assignment-api.herokuapp.com/trainers')
     .subscribe({
       next: (users) => this._users = users,
-      error: (error) => this._error = error,
+      error: (error) => console.log("Error fetching contacts: ", error),
       complete: () => console.info('complete (fetched trainers)')
     })
   }
@@ -89,8 +94,7 @@ export class UserService {
   public users(): User[] {
     return this._users;
   }
-
-  public error(): string {
-    return this._error;
-  }*/
+  /*
+    ^^^^^ Temporary for testing purposes ^^^^^
+  */
 }

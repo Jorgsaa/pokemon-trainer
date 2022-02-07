@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../models';
-import { UserLoggedInService } from '../services/user-logged-in.service';
 import { UserService } from '../services/user.service';
 
 @Component({
@@ -11,21 +10,20 @@ import { UserService } from '../services/user.service';
 export class TrainerPage implements OnInit {
 
   constructor(
-    private readonly userSecvice: UserService,
-    private readonly userLoggedInService: UserLoggedInService
+    private readonly userService: UserService,
   ) { }
 
   ngOnInit(): void {
-    // Temporary for testing. User will be sett when the login function works
-    //this.userSecvice.fetchContacts();
-    //this.userLoggedInService.setUser(this.userSecvice.users()[0])
+    // Temporary for testing. User will be set when the login function works
+    this.userService.fetchContacts();
+    this.userService.setUser(this.userService.users()[0])
   }
 
   get user(): User | undefined {
-    return this.userLoggedInService.user()
+    return this.userService.getCurrentUser();
   }
 
   get pokemons(): string[] | undefined {
-    return this.userLoggedInService.pokemons()
+    return this.userService.getCurrentUserPokemons()
   }
 }
