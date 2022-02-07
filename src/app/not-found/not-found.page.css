@@ -59,8 +59,22 @@ main {
     margin-left: 20px;
 }
 
+.page-not-found_mascot:hover {
+    animation-name: ditto-dance;
+    animation-duration: 0.3s;
+    animation-iteration-count: infinite;
+}
+
 .back-to-home-btn_specification {
     font-size: 25px;
     grid-column: 1/4;
     justify-self: center;
 }
+
+  @keyframes ditto-dance {
+    0%   {margin-left: 20px;}
+    25%   {margin-left: 18px;}
+    50%   {margin-left: 20px;}
+    75%   {margin-left: 22px;}
+    100%   {margin-left: 20px;}
+  }
