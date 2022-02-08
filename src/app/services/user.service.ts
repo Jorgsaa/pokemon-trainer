@@ -16,7 +16,15 @@ export class UserService {
 
   constructor(
     private readonly http: HttpClient,
-  ) {}
+  ) {
+    if(!this._user) {
+      let localStorageUser = localStorage.getItem(userStorageKey);
+
+      if(!!localStorageUser) {
+        this._user = JSON.parse(localStorageUser!);
+      } 
+    }    
+  }
 
   /*
     Registers new user with username.

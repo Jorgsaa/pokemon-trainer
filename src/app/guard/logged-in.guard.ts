@@ -13,7 +13,7 @@ export class LoggedInGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     
-    if(!localStorage.getItem("user")) {      
+    if(!localStorage.getItem("user")) {            
       this.router.navigateByUrl("");
       return false;
     } else {

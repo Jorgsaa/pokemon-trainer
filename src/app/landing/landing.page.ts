@@ -13,6 +13,9 @@ export class LandingPage implements OnInit {
   constructor(private userService: UserService, private readonly router: Router) { }
 
   ngOnInit(): void {
+    if(!!this.userService.getCurrentUser()) {
+      this.router.navigate(["/catalogue"]);
+    }
   }
 
   public onSubmit(loginForm: NgForm): void {
