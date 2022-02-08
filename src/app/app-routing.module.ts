@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CataloguePage } from './catalogue/catalogue.page';
-import { DetailsPage } from './shared/details/details.page';
+import { PokemonDetailsModalComponent } from './shared/details/pokemon-details-modal.component';
 import { LandingPage } from './landing/landing.page';
 import { NotFoundPage } from './not-found/not-found.page';
 import { TrainerPage } from './trainer/trainer.page';
@@ -10,7 +10,7 @@ const routes: Routes = [
   { path: '',           component: LandingPage    },
   { path: 'catalogue',  component: CataloguePage  },
   { path: 'trainer',    component: TrainerPage    },
-  { path: 'details',    component: DetailsPage    },
+  { path: 'details',    component: PokemonDetailsModalComponent    },
   { path: '**',         component: NotFoundPage   },
 ];
 

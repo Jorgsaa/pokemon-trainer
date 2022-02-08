@@ -4,11 +4,11 @@ import { Pokemon, PokemonDetails } from '../../models';
 import { PokemonService } from '../../services/pokemon.service';
 
 @Component({
-  selector: 'app-details',
-  templateUrl: './details.page.html',
-  styleUrls: ['./details.page.css']
+  selector: 'app-pokemon-details-modal',
+  templateUrl: './pokemon-details-modal.component.html',
+  styleUrls: ['./pokemon-details-modal.component.css']
 })
-export class DetailsPage implements OnInit {
+export class PokemonDetailsModalComponent implements OnInit {
 
   @Input() pokemon: Pokemon = { name: 'mewtwo', url: 'https://pokeapi.co/api/v2/pokemon/mewtwo' };
 
