@@ -56,7 +56,7 @@ export class UserService {
     If username doesent exist, create new user with username.
     Routes to /catalogue page after login.
   */
-  public async login(username: string) {
+  public login(username: string) {
     this.http.get<User[]>(apiUrl + `?username=${username}`)
       .subscribe(response => {
         if(response.length === 0) {
