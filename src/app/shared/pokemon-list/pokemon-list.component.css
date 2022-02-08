@@ -1,20 +1,20 @@
 .pokemon-list-container {
-    margin: 0 auto;
-    align-content: center;
+  margin: 0 auto;
+  align-content: center;
 }
 
 .pokemon-list {
-    display: flex; 
-    flex-wrap: wrap;
-    justify-content: space-around;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
 }
 
 .pokemon-list-item {
-   padding: 1rem; 
+  padding: 1rem;
 }
 
 .pokemon-list-button {
-    padding: 0 1rem;
-    text-align: center;
-    margin: 0 auto;
- }
+  padding: 0 1rem;
+  text-align: center;
+  margin: 0 auto;
+}

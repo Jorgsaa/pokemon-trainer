@@ -23,16 +23,16 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
     PokemonDetailsModalComponent,
     NotFoundPage,
     PokemonListItemComponent,
-    PokemonListComponent
+    PokemonListComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     InfiniteScrollModule,
-    FormsModule
+    FormsModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
