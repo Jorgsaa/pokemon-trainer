@@ -3,7 +3,7 @@
         <h1>Pokémon Trainer</h1>
         <a role='button' routerLinkActive="active-link" routerLink="/catalogue" >Catalogue</a>
         <a role='button' routerLinkActive="active-link" routerLink="/trainer">Trainer</a>
-        <a role='button' routerLinkActive="active-link" routerLink="" [routerLinkActiveOptions]="{exact:true}">Logout</a>
+        <button (click)="logoutButtonHandler()">Logout</button>
     </header>
     <div id="app-page">
         <router-outlet></router-outlet>

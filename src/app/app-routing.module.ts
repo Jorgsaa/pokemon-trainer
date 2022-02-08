@@ -7,9 +7,9 @@ import { TrainerPage } from './trainer/trainer.page';
 import { LoggedInGuard } from './guard/logged-in.guard';
 
 const routes: Routes = [
-  { path: '',           component: LandingPage    },
-  { path: 'catalogue',  component: CataloguePage  },
-  { path: 'trainer',    component: TrainerPage    },
+  { path: '',           component: LandingPage},
+  { path: 'catalogue',  component: CataloguePage, canActivate: [LoggedInGuard]   },
+  { path: 'trainer',    component: TrainerPage, canActivate: [LoggedInGuard]     },
   { path: '**',         component: NotFoundPage   },
 ];
 
