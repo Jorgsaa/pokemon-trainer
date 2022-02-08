@@ -56,6 +56,32 @@ export class UserService {
       });
   }
 
+  /*
+    Catch pokemon
+    Add pokemon to the user pokemon list in local storage and api
+  */
+public catchPokemon(pokemonName: string): void {  
+  if (this._user) {
+    this._user?.pokemon.push(pokemonName)
+   
+    this.http.patch<User>(apiUrl + this._user?.id, 
+      {
+        "pokemon": this._user?.pokemon
+      },
+      {
+        headers: {
+          'X-API-Key': apiKey,
+          'Content-Type': 'application/json'
+        }
+      })
+    .subscribe({
+      next: (user) => this._user = user,
+      error: (error) => console.log("Error catching pokemon: ", error),
+      complete: () => localStorage.setItem(userStorageKey, JSON.stringify(this._user))
+    })
+  }
+ }
+
   public logout() {
     this._user = undefined;
     localStorage.removeItem(userStorageKey);
