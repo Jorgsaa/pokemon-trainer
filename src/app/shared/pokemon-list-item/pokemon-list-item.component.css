@@ -45,8 +45,13 @@
   z-index: 2;
 }
 
-.pokemon-info-icon,
 .pokemon-pokeball-icon {
+  z-index: 2;
+  max-height: 16px;
+  aspect-ratio: 1;
+}
+
+.pokemon-info-icon {
   z-index: 2;
   max-height: 16px;
   aspect-ratio: 1;
