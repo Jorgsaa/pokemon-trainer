@@ -1,5 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from '@angular/core';
+import { map, Observable } from "rxjs";
 import { User } from "../models";
 
 @Injectable({
@@ -29,5 +30,12 @@ export class UserService {
 
   public error(): string {
     return this._error;
+  }
+
+  public fetchUser(username: string): Observable<User | undefined> {
+    return this.http.get<User[]>('https://jorgsaa-noroff-assignment-api.herokuapp.com/trainers')
+    .pipe(
+      map<User[], User | undefined>(users => users.find(user => user.username === username))
+    )
   }
 }
