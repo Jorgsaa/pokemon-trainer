@@ -28,8 +28,9 @@ export class PokemonListItemComponent implements OnInit {
   public handleCatchClicked(pokemonName: string): void {
     if (this.hasObtained) {
       this.userService.freePokemon(pokemonName)
+      this.hasObtained = false
     } else {
-      this.hasObtained = false;
+      this.hasObtained = true;
       this.userService.catchPokemon(pokemonName)
     }
   }
