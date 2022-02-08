@@ -1,9 +1,9 @@
 <div class="pokemon-container">
-  <div class="pokemon-top-bar">#{{ (pokemonDetails$ | async)?.id }}
-  </div>
+  <div class="pokemon-top-bar">#{{ (pokemonDetails$ | async)?.id }}</div>
   <div class="pokemon-sprite-container">
     <img
       class="pokemon-sprite"
+      (click)="handleCatchClicked(pokemon.name)"
       [src]="(pokemonDetails$ | async)?.sprites?.front_default"
     />
   </div>
@@ -14,7 +14,6 @@
       [style.visibility]="hasObtained ? 'hidden' : 'visible'"
       class="pokemon-pokeball-icon"
       src="assets/pokeball.png"
-      (click)="handleCatchClicked(pokemon.name)"
     />
   </div>
 </div>
