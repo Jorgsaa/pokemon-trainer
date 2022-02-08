@@ -5,7 +5,7 @@
 Pokemon trainer application built using:
  - Angular 13
  - @angular/router
- - [ngx-infite-scroll](https://github.com/orizens/ngx-infinite-scroll)
+ - [ngx-infinite-scroll](https://github.com/orizens/ngx-infinite-scroll)
 
 ## Table of Contents
 
