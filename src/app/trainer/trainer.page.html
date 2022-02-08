@@ -1,8 +1,10 @@
-<section>
-    <h1>Trainer</h1>
-    <h2>{{ user?.username }}</h2>
+<section class="trainer-info-section">
+    <h1>{{ user?.username }}</h1>
 </section>
 <main>
+    <section class="trainer-pokemon-section">
+        <h1>Your collection</h1>
+    </section>
     <app-pokemon-list
     class="catalogue-pokemon-list"
     [pokemon]="cataloguePokemon"
