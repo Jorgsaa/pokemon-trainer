@@ -34,7 +34,7 @@ export class UserService {
   */
   private newUser(username: string) {
     this.http
-      .post<User[]>(
+      .post<User>(
         apiUrl,
         {
           username: username,
@@ -48,7 +48,7 @@ export class UserService {
         }
       )
       .subscribe((response) => {
-        this._user = response[0];
+        this._user = response;
         localStorage.setItem(userStorageKey, JSON.stringify(response));
         this.router.navigate(['/catalogue']);
       });
