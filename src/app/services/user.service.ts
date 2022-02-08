@@ -1,43 +1,45 @@
-import { HttpClient, } from "@angular/common/http";
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map, Observable } from "rxjs";
-import { User } from "../models";
+import { map, Observable } from 'rxjs';
+import { User } from '../models';
 
-const apiUrl = "https://jorgsaa-noroff-assignment-api.herokuapp.com/trainers/";
-const apiKey = "uEzYwhrkm0OmaPQRfHSqz2OsKL8nsxK3AiqVkJkPjCv2lbiLnDyDkzOCGMm1A1gG";
-const userStorageKey = "user";
+const apiUrl = 'https://jorgsaa-noroff-assignment-api.herokuapp.com/trainers/';
+const apiKey =
+  'uEzYwhrkm0OmaPQRfHSqz2OsKL8nsxK3AiqVkJkPjCv2lbiLnDyDkzOCGMm1A1gG';
+const userStorageKey = 'user';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UserService {
   private _users: User[] = [];
   private _user?: User;
 
-  constructor(
-    private readonly http: HttpClient,
-  ) {}
+  constructor(private readonly http: HttpClient) {}
 
   /*
     Registers new user with username.
     Private because method doesent check if user already exists in api.
   */
-  private newUser(username: string) {      
-    this.http.post<User[]>(apiUrl, 
-      {
-        "username": username,
-        "pokemon": []
-      },
-      {
-        headers: {
-          'X-API-Key': apiKey,
-          'Content-Type': 'application/json'
+  private newUser(username: string) {
+    this.http
+      .post<User[]>(
+        apiUrl,
+        {
+          username: username,
+          pokemon: [],
+        },
+        {
+          headers: {
+            'X-API-Key': apiKey,
+            'Content-Type': 'application/json',
+          },
         }
-      })
-    .subscribe(response => {
-      this._user = response[0];      
-      localStorage.setItem(userStorageKey, JSON.stringify(response))
-    });   
+      )
+      .subscribe((response) => {
+        this._user = response[0];
+        localStorage.setItem(userStorageKey, JSON.stringify(response));
+      });
   }
 
   /*
@@ -45,13 +47,14 @@ export class UserService {
     If username doesent exist, create new user with username.
   */
   public login(username: string) {
-    this.http.get<User[]>(apiUrl + `?username=${username}`)
-      .subscribe(response => {
-        if(response.length === 0) {
+    this.http
+      .get<User[]>(apiUrl + `?username=${username}`)
+      .subscribe((response) => {
+        if (response.length === 0) {
           this.newUser(username);
         } else {
           this._user = response[0];
-          localStorage.setItem(userStorageKey, JSON.stringify(response))
+          localStorage.setItem(userStorageKey, JSON.stringify(response));
         }
       });
   }
@@ -83,12 +86,15 @@ export class UserService {
   }
 
   public fetchContacts() {
-    this.http.get<User[]>('https://jorgsaa-noroff-assignment-api.herokuapp.com/trainers')
-    .subscribe({
-      next: (users) => this._users = users,
-      error: (error) => console.log("Error fetching contacts: ", error),
-      complete: () => console.info('complete (fetched trainers)')
-    })
+    this.http
+      .get<User[]>(
+        'https://jorgsaa-noroff-assignment-api.herokuapp.com/trainers'
+      )
+      .subscribe({
+        next: (users) => (this._users = users),
+        error: (error) => console.log('Error fetching contacts: ', error),
+        complete: () => console.info('complete (fetched trainers)'),
+      });
   }
 
   public users(): User[] {
@@ -97,11 +103,13 @@ export class UserService {
   /*
     ^^^^^ Temporary for testing purposes ^^^^^
   */
-    public fetchUser(username: string): Observable<User | undefined> {
-      return this.http.get<User[]>('https://jorgsaa-noroff-assignment-api.herokuapp.com/trainers')
-      .pipe(
-        map(users => users.find(user => user.username === username))
+  public fetchUser(username: string): Observable<User | undefined> {
+    return this.http
+      .get<User[]>(
+        'https://jorgsaa-noroff-assignment-api.herokuapp.com/trainers'
       )
+      .pipe(map((users) => users.find((user) => user.username === username)));
+  }
 
   public addPokemon(user: User, pokemonName: string): Observable<void> {
     return this.http.patch<void>(
