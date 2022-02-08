@@ -16,6 +16,8 @@ export class PokemonListItemComponent implements OnInit {
 
   @Output() onInfoClicked: EventEmitter<Pokemon> = new EventEmitter()
 
+  @Input() showInfo: boolean = false
+
   pokemonDetails$: Observable<PokemonDetails> = of();
 
   hasObtained: boolean = false;
@@ -30,8 +32,8 @@ export class PokemonListItemComponent implements OnInit {
       this.userService.freePokemon(pokemonName)
       this.hasObtained = false
     } else {
-      this.hasObtained = true;
       this.userService.catchPokemon(pokemonName)
+      this.hasObtained = true;
     }
   }
 
