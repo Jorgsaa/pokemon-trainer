@@ -56,6 +56,15 @@ export class UserService {
       });
   }
 
+  /*
+    Catch pokemon
+    Sort pokemonlist by id, then add pokemon to the users pokemon list in local storage and api
+  */
+ public catchPokemon(pokemonName: string) {
+   this._user?.pokemon.push(pokemonName)
+   localStorage.setItem(userStorageKey, JSON.stringify(this._user))
+ }
+
   public logout() {
     this._user = undefined;
     localStorage.removeItem(userStorageKey);

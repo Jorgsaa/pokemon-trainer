@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { Pokemon, PokemonDetails } from 'src/app/models';
 import { PokemonService } from 'src/app/services/pokemon.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-pokemon-list-item',
@@ -15,11 +16,15 @@ export class PokemonListItemComponent implements OnInit {
 
   hasObtained: boolean = true;
 
-  constructor(private pokemonService: PokemonService) {}
+  constructor(
+    private pokemonService: PokemonService,
+    private userService: UserService
+    ) {}
 
   public handleCatchClicked(pokemonName: string): void {
     console.log(pokemonName);
     this.hasObtained = false;
+    this.userService.catchPokemon(pokemonName)
   }
 
   ngOnInit(): void {
