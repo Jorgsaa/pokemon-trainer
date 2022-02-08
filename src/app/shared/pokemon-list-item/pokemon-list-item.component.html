@@ -13,6 +13,7 @@
       [style.visibility]="hasObtained ? 'visible' : 'hidden'"
       class="pokemon-pokeball-icon"
       src="assets/pokeball.png"
+      (click)="handleCatchClicked(pokemon.name)"
     />
   </div>
 </div>

@@ -17,6 +17,10 @@ export class PokemonListItemComponent implements OnInit {
 
   constructor(private pokemonService: PokemonService) {}
 
+  public handleCatchClicked(pokemonName: string): void {
+    console.log(pokemonName);
+  }
+
   ngOnInit(): void {
     this.pokemonDetails$ = this.pokemonService.fetchDetails(this.pokemon.name);
   }
