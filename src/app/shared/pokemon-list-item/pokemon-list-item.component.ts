@@ -36,5 +36,14 @@ export class PokemonListItemComponent implements OnInit {
   }
 
   onIconClicked(): void {
+     this.userService
+      .addPokemon(
+        //TODO: replace hardcoded user
+        { id: 1, username: 'ash', pokemon: ['bulbasaur', 'pikachu'] },
+        this.pokemon.name
+      )
+      .subscribe({
+        next: _ => this.updateStatus()
+      });
   }
 }
