@@ -1,5 +1,6 @@
 import { HttpClient, } from "@angular/common/http";
 import { Injectable } from '@angular/core';
+import { Router } from "@angular/router";
 import { catchError, Observable, pipe } from "rxjs";
 import { User } from "../models";
 
@@ -16,6 +17,7 @@ export class UserService {
 
   constructor(
     private readonly http: HttpClient,
+    private readonly router: Router
   ) {
     if(!this._user) {
       let localStorageUser = localStorage.getItem(userStorageKey);
@@ -45,14 +47,16 @@ export class UserService {
     .subscribe(response => {
       this._user = response[0];      
       localStorage.setItem(userStorageKey, JSON.stringify(response))
+      this.router.navigate(["/catalogue"]);
     });   
   }
 
   /*
     Login with username. 
     If username doesent exist, create new user with username.
+    Routes to /catalogue page after login.
   */
-  public login(username: string) {
+  public async login(username: string) {
     this.http.get<User[]>(apiUrl + `?username=${username}`)
       .subscribe(response => {
         if(response.length === 0) {
@@ -60,6 +64,7 @@ export class UserService {
         } else {
           this._user = response[0];
           localStorage.setItem(userStorageKey, JSON.stringify(response))
+          this.router.navigate(["/catalogue"]);
         }
       });
   }
@@ -93,6 +98,7 @@ public catchPokemon(pokemonName: string): void {
   public logout() {
     this._user = undefined;
     localStorage.removeItem(userStorageKey);
+    this.router.navigate([""]);
   }
 
   /*

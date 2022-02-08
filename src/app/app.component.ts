@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
 import { UserService } from './services/user.service';
 
 @Component({
@@ -10,10 +9,9 @@ import { UserService } from './services/user.service';
 export class AppComponent {
   title = 'pokemon-trainer';
 
-  constructor(private userService: UserService, private readonly router: Router) { }
+  constructor(private userService: UserService) { }
 
   public logoutButtonHandler() {
     this.userService.logout();
-    this.router.navigate([""]);
   }
 }

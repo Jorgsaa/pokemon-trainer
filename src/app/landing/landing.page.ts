@@ -20,7 +20,5 @@ export class LandingPage implements OnInit {
 
   public onSubmit(loginForm: NgForm): void {
     this.userService.login(loginForm.value.username);
-    this.router.navigate(["/catalogue"]);
   }
-
 }
