@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
+import { UserService } from "../services/user.service"
 
 @Component({
   selector: 'app-landing',
@@ -7,9 +10,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LandingPage implements OnInit {
 
-  constructor() { }
+  constructor(private userService: UserService, private readonly router: Router) { }
 
   ngOnInit(): void {
+  }
+
+  public onSubmit(loginForm: NgForm): void {
+    this.userService.login(loginForm.value.username);
+    this.router.navigate(["/catalogue"]);
   }
 
 }
