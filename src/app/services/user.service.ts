@@ -12,7 +12,6 @@ const userStorageKey = 'user';
   providedIn: 'root',
 })
 export class UserService {
-  private _users: User[] = [];
   private _user?: User;
 
   constructor(
@@ -162,24 +161,5 @@ export class UserService {
   */
   public getCurrentUserPokemons(): string[] | undefined {
     return this._user?.pokemon;
-  }
-
-  /*
-    VVVVV Temporary for testing purposes VVVVV
-  */
-  public setUser(user: User) {
-    this._user = user;
-  }
-
-  public fetchContacts() {
-    this.http.get<User[]>(apiUrl).subscribe({
-      next: (users) => (this._users = users),
-      error: (error) => console.error('Error fetching contacts: ', error),
-      complete: () => console.info('complete (fetched trainers)'),
-    });
-  }
-
-  public users(): User[] {
-    return this._users;
   }
 }
