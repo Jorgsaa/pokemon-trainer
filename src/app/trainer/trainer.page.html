@@ -9,6 +9,7 @@
     [distance]="1"
     [throttle]="100"
     (onScroll)="loadMore()"
+    (onItemIconClicked)="freePokemon($event)"
     ></app-pokemon-list>
     <a *ngIf="pokemons?.length === 0" role='button' routerLink="/catalogue">You have no Pokémons. Go to the catalogue to catch 'em all!</a>
 </main>
