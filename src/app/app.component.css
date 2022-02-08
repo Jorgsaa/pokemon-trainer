@@ -11,7 +11,7 @@
 #app-header {
     flex-grow: 0;
     background-color: gray;
-    height: 10vh;
+    height: 15vh;
 
     display: grid;
     grid-template-columns: 1fr auto auto auto;
