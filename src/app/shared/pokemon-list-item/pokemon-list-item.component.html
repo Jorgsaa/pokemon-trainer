@@ -4,6 +4,7 @@
     <img
       class="pokemon-sprite"
       [src]="(pokemonDetails$ | async)?.sprites?.front_default"
+      (click)="onIconClicked()"
     />
   </div>
   <div class="pokemon-bottom-bar">

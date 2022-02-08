@@ -29,4 +29,7 @@ export class PokemonListItemComponent implements OnInit {
       .fetchUser('ash')
       .pipe(map((user) => user?.pokemon.includes(this.pokemon.name) ?? false));
   }
+
+  onIconClicked(): void {
+  }
 }
