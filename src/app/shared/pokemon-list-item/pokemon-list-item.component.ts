@@ -14,7 +14,7 @@ export class PokemonListItemComponent implements OnInit {
 
   pokemonDetails$: Observable<PokemonDetails> = of();
 
-  hasObtained: boolean = true;
+  hasObtained: boolean = false;
 
   constructor(
     private pokemonService: PokemonService,
@@ -22,12 +22,21 @@ export class PokemonListItemComponent implements OnInit {
     ) {}
 
   public handleCatchClicked(pokemonName: string): void {
-    console.log(pokemonName);
     this.hasObtained = false;
     this.userService.catchPokemon(pokemonName)
   }
 
   ngOnInit(): void {
     this.pokemonDetails$ = this.pokemonService.fetchDetails(this.pokemon.name);
+
+    // The user should not be able to catch the same pokemon twice
+    const pokemons = this.userService.getCurrentUserPokemons()
+    if (pokemons) {
+      for (const pokemon of pokemons) {
+        if (pokemon === this.pokemon.name) {
+          this.hasObtained = true;
+        }
+      }
+    }
   }
 }
