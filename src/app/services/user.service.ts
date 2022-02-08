@@ -103,6 +103,8 @@ export class UserService {
   /*
     ^^^^^ Temporary for testing purposes ^^^^^
   */
+
+  /* TESTING */
   public fetchUser(username: string): Observable<User | undefined> {
     return this.http
       .get<User[]>(
@@ -111,6 +113,7 @@ export class UserService {
       .pipe(map((users) => users.find((user) => user.username === username)));
   }
 
+  /* TESTING */
   public addPokemon(user: User, pokemonName: string): Observable<void> {
     return this.http.patch<void>(
       `https://jorgsaa-noroff-assignment-api.herokuapp.com/trainers/${user.id}`,
