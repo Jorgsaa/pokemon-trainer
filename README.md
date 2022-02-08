@@ -1,27 +1,46 @@
-# PokemonTrainer
+# Assignment 4: Pokémon trainer
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.1.
+[![standard-readme compliant](https://img.shields.io/badge/standard--readme-OK-green.svg?style=flat-square)](https://github.com/RichardLitt/standard-readme)
 
-## Development server
+Pokemon trainer application built using:
+ - Angular 13
+ - @angular/router
+ - [ngx-infite-scroll](https://github.com/orizens/ngx-infinite-scroll)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Table of Contents
 
-## Code scaffolding
+- [Assignment 4: Pokémon trainer](#assignment-4-pokémon-trainer)
+  - [Table of Contents](#table-of-contents)
+  - [Install](#install)
+  - [Usage](#usage)
+  - [Maintainers](#maintainers)
+  - [Contributing](#contributing)
+  - [License](#license)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Install
 
-## Build
+```
+npm install
+```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Usage
 
-## Running unit tests
+```
+npm start
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Maintainers
 
-## Running end-to-end tests
+[Jonas Bergkvist Melå @Pucko321](https://github.com/Pucko321) \
+[Jonas Kristoffersen @jonaskris](https://github.com/jonaskris) \
+[Jørgen Saanum @jorgsaa](https://github.com/jorgsaa)
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## Contributing
 
-## Further help
+PRs accepted.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Small note: If editing the README, please conform to the [standard-readme](https://github.com/RichardLitt/standard-readme) specification.
+
+## License
+
+MIT © 2022 Jonas Bergkvist Melå, Jonas Kristoffersen, Jørgen Saanum
