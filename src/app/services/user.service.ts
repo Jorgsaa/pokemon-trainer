@@ -1,7 +1,7 @@
 import { HttpClient, } from "@angular/common/http";
 import { Injectable } from '@angular/core';
 import { Router } from "@angular/router";
-import { catchError, Observable, pipe } from "rxjs";
+import { mergeMap, Observable, of, tap } from "rxjs";
 import { User } from "../models";
 
 const apiUrl = "https://jorgsaa-noroff-assignment-api.herokuapp.com/trainers/";
@@ -93,6 +93,36 @@ public catchPokemon(pokemonName: string): void {
       complete: () => localStorage.setItem(userStorageKey, JSON.stringify(this._user))
     })
   }
+ }
+
+ public freePokemon(pokemonName: string): void {
+   if (this._user) {
+     const pokemonIndex = this._user?.pokemon.findIndex(userPokemon => userPokemon === pokemonName)
+
+     if (pokemonIndex < 0)
+      return
+
+      
+      const newList = this._user?.pokemon;
+      newList.splice(pokemonIndex, 1)
+
+
+     this.http.patch<User>(apiUrl + this._user?.id, 
+      {
+        "pokemon": newList
+      },
+      {
+        headers: {
+          'X-API-Key': apiKey,
+          'Content-Type': 'application/json'
+        }
+      })
+    .subscribe({
+      next: (user) => this._user = user,
+      error: (error) => console.log("Error catching pokemon: ", error),
+      complete: () => localStorage.setItem(userStorageKey, JSON.stringify(this._user))
+    })
+   }
  }
 
   public logout() {
