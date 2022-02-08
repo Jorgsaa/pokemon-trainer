@@ -8,8 +8,9 @@
     [distance]="1"
     [throttle]="100"
     (onScroll)="loadMore()"
+    (onItemInfoClicked)="toggleModalVisibility($event)"
   ></app-pokemon-list>
 
-  <app-pokemon-details-modal></app-pokemon-details-modal>
+  <app-pokemon-details-modal *ngIf="showModal && selectedPokemon != null" [pokemon]="selectedPokemon" (onCloseClicked)="toggleModalVisibility()"></app-pokemon-details-modal>
   
 </div>

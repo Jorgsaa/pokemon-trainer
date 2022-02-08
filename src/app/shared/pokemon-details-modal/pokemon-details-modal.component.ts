@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output } from '@angular/core';
+import { EventEmitter } from '@angular/core';
 import { Pokemon, PokemonDetails } from '../../models';
 import { PokemonService } from '../../services/pokemon.service';
 
@@ -9,7 +10,9 @@ import { PokemonService } from '../../services/pokemon.service';
 })
 export class PokemonDetailsModalComponent implements OnInit {
 
-  @Input() pokemon: Pokemon = { name: 'mewtwo', url: 'https://pokeapi.co/api/v2/pokemon/mewtwo' };
+  @Input() pokemon: Pokemon = { name: '', url: '' };
+
+  @Output() onCloseClicked: EventEmitter<string> = new EventEmitter()
 
   public getTotal = (pokemon?: PokemonDetails) => pokemon?.stats.reduce((prev, stat) => prev + stat.base_stat, 0)
   
@@ -22,6 +25,8 @@ export class PokemonDetailsModalComponent implements OnInit {
       next: (details) => this.pokemonDetails = details
     })
   }
+
+
 
   
 

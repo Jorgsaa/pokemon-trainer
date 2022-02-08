@@ -12,9 +12,13 @@ export class CataloguePage implements OnInit {
   @Input() pageLength: number = 50
 
   @Output() cataloguePokemon: Pokemon[] = []
+
+  @Output() selectedPokemon?: Pokemon
   
   offset: number = 0
   
+  showModal: boolean = false
+
   constructor(private pokemonService: PokemonService) { }
 
   ngOnInit(): void {
@@ -26,5 +30,10 @@ export class CataloguePage implements OnInit {
     this.pokemonService.fetch(this.pageLength, this.offset)
     .subscribe(data => this.cataloguePokemon.push(...data))
     this.offset += this.pageLength
+  }
+
+  toggleModalVisibility(pokemon?: Pokemon): void {
+    this.selectedPokemon = pokemon
+    this.showModal = !this.showModal
   }
 }

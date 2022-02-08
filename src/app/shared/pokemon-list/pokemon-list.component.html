@@ -10,6 +10,7 @@
       *ngFor="let pokemonElement of pokemon"
       [pokemon]="pokemonElement"
       class="pokemon-list-item"
+      (onInfoClicked)="onItemInfoClicked.emit($event)"
     ></app-pokemon-list-item>
   </div>
 </div>
