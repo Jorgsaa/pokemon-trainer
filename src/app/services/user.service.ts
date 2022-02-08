@@ -102,5 +102,20 @@ export class UserService {
       .pipe(
         map(users => users.find(user => user.username === username))
       )
-    }
+
+  public addPokemon(user: User, pokemonName: string): Observable<void> {
+    return this.http.patch<void>(
+      `https://jorgsaa-noroff-assignment-api.herokuapp.com/trainers/${user.id}`,
+      {
+        username: user.username,
+        pokemon: [...user.pokemon, pokemonName],
+      },
+      {
+        headers: {
+          'X-API-Key': apiKey,
+          'Content-Type': 'application/json',
+        },
+      }
+    );
+  }
 }
