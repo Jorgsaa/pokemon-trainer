@@ -19,6 +19,7 @@ export class PokemonListItemComponent implements OnInit {
 
   public handleCatchClicked(pokemonName: string): void {
     console.log(pokemonName);
+    this.hasObtained = false;
   }
 
   ngOnInit(): void {
