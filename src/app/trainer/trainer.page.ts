@@ -49,4 +49,8 @@ export class TrainerPage implements OnInit {
       }
     }
   }
+
+  freePokemon(pokemon: Pokemon): void {
+    this.userService.freePokemon(pokemon.name)
+  }
 }
