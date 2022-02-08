@@ -4,6 +4,7 @@ import { CataloguePage } from './catalogue/catalogue.page';
 import { LandingPage } from './landing/landing.page';
 import { NotFoundPage } from './not-found/not-found.page';
 import { TrainerPage } from './trainer/trainer.page';
+import { LoggedInGuard } from './guard/logged-in.guard';
 
 const routes: Routes = [
   { path: '',           component: LandingPage    },
