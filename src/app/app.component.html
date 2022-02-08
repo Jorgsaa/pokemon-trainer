@@ -1,11 +1,25 @@
 <div id="app-root">
-    <header id="app-header">
-        <h1>Pokémon Trainer</h1>
-        <a *ngIf="navlinksVisible" role='button' routerLinkActive="active-link" routerLink="/catalogue" >Catalogue</a>
-        <a *ngIf="navlinksVisible" role='button' routerLinkActive="active-link" routerLink="/trainer">Trainer</a>
-        <button *ngIf="navlinksVisible" (click)="logoutButtonHandler()">Logout</button>
-    </header>
-    <div id="app-page">
-        <router-outlet></router-outlet>
-    </div>
+  <header id="app-header">
+    <h1>Pokémon Trainer</h1>
+    <a
+      *ngIf="navlinksVisible"
+      role="button"
+      routerLinkActive="active-link"
+      routerLink="/catalogue"
+      >Catalogue</a
+    >
+    <a
+      *ngIf="navlinksVisible"
+      role="button"
+      routerLinkActive="active-link"
+      routerLink="/trainer"
+      >Trainer</a
+    >
+    <button *ngIf="navlinksVisible" (click)="logoutButtonHandler()">
+      Logout
+    </button>
+  </header>
+  <div id="app-page">
+    <router-outlet></router-outlet>
+  </div>
 </div>

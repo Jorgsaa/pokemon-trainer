@@ -5,7 +5,6 @@ import { PokemonService } from 'src/app/services/pokemon.service';
 import { UserService } from 'src/app/services/user.service';
 import { EventEmitter } from '@angular/core';
 
-
 @Component({
   selector: 'app-pokemon-list-item',
   templateUrl: './pokemon-list-item.component.html',
@@ -14,9 +13,9 @@ import { EventEmitter } from '@angular/core';
 export class PokemonListItemComponent implements OnInit {
   @Input() pokemon: Pokemon = { name: '', url: '' };
 
-  @Output() onInfoClicked: EventEmitter<Pokemon> = new EventEmitter()
+  @Output() onInfoClicked: EventEmitter<Pokemon> = new EventEmitter();
 
-  @Input() showInfo: boolean = false
+  @Input() showInfo: boolean = false;
 
   pokemonDetails$: Observable<PokemonDetails> = of();
 
@@ -25,14 +24,14 @@ export class PokemonListItemComponent implements OnInit {
   constructor(
     private pokemonService: PokemonService,
     private userService: UserService
-    ) {}
+  ) {}
 
   public handleCatchClicked(pokemonName: string): void {
     if (this.hasObtained) {
-      this.userService.freePokemon(pokemonName)
-      this.hasObtained = false
+      this.userService.freePokemon(pokemonName);
+      this.hasObtained = false;
     } else {
-      this.userService.catchPokemon(pokemonName)
+      this.userService.catchPokemon(pokemonName);
       this.hasObtained = true;
     }
   }
@@ -41,7 +40,7 @@ export class PokemonListItemComponent implements OnInit {
     this.pokemonDetails$ = this.pokemonService.fetchDetails(this.pokemon.name);
 
     // The user should not be able to catch the same pokemon twice
-    const pokemons = this.userService.getCurrentUserPokemons()
+    const pokemons = this.userService.getCurrentUserPokemons();
     if (pokemons) {
       for (const pokemon of pokemons) {
         if (pokemon === this.pokemon.name) {
