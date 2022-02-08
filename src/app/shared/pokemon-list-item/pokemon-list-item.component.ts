@@ -25,7 +25,12 @@ export class PokemonListItemComponent implements OnInit {
 
   ngOnInit(): void {
     this.pokemonDetails$ = this.pokemonService.fetchDetails(this.pokemon.name);
+    this.updateStatus();
+  }
+
+  updateStatus(): void {
     this.hasObtained$ = this.userService
+    //TODO: replace hardcoded user
       .fetchUser('ash')
       .pipe(map((user) => user?.pokemon.includes(this.pokemon.name) ?? false));
   }
