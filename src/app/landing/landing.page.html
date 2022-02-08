@@ -1,8 +1,11 @@
-<p>landing works!</p>
-
-<form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)"> 
-    <label for="username">Username</label>
-    <input type="text" name="username" ngModel #username="ngModel" required id="username">
-
-    <button type="submit" [disabled]="loginForm.invalid" >Login</button>
-</form>
+<main>
+    <div id="center-box">
+        <img id="pokeball-logo" src="../../assets/pokeball.png" alt="Pokeball">
+        <h1>Login</h1>
+        <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)"> 
+            <label for="username">Username</label>
+            <input type="text" name="username" ngModel #username="ngModel" required id="username">
+            <button type="submit" [disabled]="loginForm.invalid" >Login</button>
+        </form>
+    </div>
+</main>

@@ -15,7 +15,9 @@ export class PokemonListComponent implements OnInit {
 
   @Input() throttle: number = 0
 
-  @Output() onScroll: EventEmitter<string> = new EventEmitter();
+  @Output() onScroll: EventEmitter<string> = new EventEmitter()
+
+  @Output() onItemInfoClicked: EventEmitter<Pokemon> = new EventEmitter()
 
   constructor(private pokemonService: PokemonService) { }
 
