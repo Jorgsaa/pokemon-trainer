@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CataloguePage } from './catalogue/catalogue.page';
-import { DetailsPage } from './details/details.page';
+import { DetailsPage } from './shared/details/details.page';
 import { LandingPage } from './landing/landing.page';
 import { NotFoundPage } from './not-found/not-found.page';
 import { TrainerPage } from './trainer/trainer.page';
