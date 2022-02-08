@@ -94,6 +94,10 @@ public catchPokemon(pokemonName: string): void {
   }
  }
 
+   /*
+    Free pokemon
+    Remove pokemon from the user pokemon list in local storage and api
+  */
  public freePokemon(pokemonName: string): void {
    if (this._user) {
      const pokemonIndex = this._user?.pokemon.findIndex(userPokemon => userPokemon === pokemonName)
@@ -124,6 +128,10 @@ public catchPokemon(pokemonName: string): void {
    }
  }
 
+ /*
+    Logout and clear the user from localStorage.
+    Route to root (landing page)
+ */
   public logout() {
     this._user = undefined;
     localStorage.removeItem(userStorageKey);
