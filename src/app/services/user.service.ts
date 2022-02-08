@@ -1,7 +1,6 @@
 import { HttpClient, } from "@angular/common/http";
 import { Injectable } from '@angular/core';
 import { Router } from "@angular/router";
-import { mergeMap, Observable, of, tap } from "rxjs";
 import { User } from "../models";
 
 const apiUrl = "https://jorgsaa-noroff-assignment-api.herokuapp.com/trainers/";
