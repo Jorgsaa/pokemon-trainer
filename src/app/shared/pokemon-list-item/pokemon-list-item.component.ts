@@ -3,7 +3,7 @@ import { map, Observable, of } from 'rxjs';
 import { Pokemon, PokemonDetails } from 'src/app/models';
 import { PokemonService } from 'src/app/services/pokemon.service';
 import { EventEmitter } from '@angular/core';
-import { UserService } from 'src/app/services/users.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-pokemon-list-item',
