@@ -1,35 +1,37 @@
-<div class="modal-container">
-    <div class="pokemon-details-container">
-        <div class="col-1">
-            <div class="pokemon-item-container">
-                <app-pokemon-list-item [pokemon]="pokemon" ></app-pokemon-list-item>
+<div class="modal">
+    <div class="modal-content">
+        <div class="pokemon-details-container">
+            <div class="col-1">
+                <div class="pokemon-item-container">
+                    <app-pokemon-list-item [pokemon]="pokemon"></app-pokemon-list-item>
+                </div>
+                <div class="pokemon-ability-container">
+                    <div class="pokemon-ability-title">Abilities</div>
+                    <div class="pokemon-ability-item" *ngFor="let ability of pokemonDetails?.abilities">
+                        {{ ability.ability.name | titlecase }}
+                    </div>
+                </div>
             </div>
-            <div class="pokemon-ability-container">
-                <div class="pokemon-ability-title">Abilities</div>
-                <div class="pokemon-ability-item" *ngFor="let ability of pokemonDetails?.abilities">
-                    {{ ability.ability.name | titlecase }}
+            <div class="col-2">
+                <div class="pokemon-name">
+                    {{ pokemon.name | titlecase }}
+                </div>
+                <div class="pokemon-stat-container">
+                    <div class="pokemon-stat-item" *ngFor="let stat of pokemonDetails?.stats">
+                        {{ stat.stat.name | titlecase }} : {{ stat.base_stat }}
+                    </div>
+                    <div class="pokemon-stat-total">
+                        Total: {{ getTotal(pokemonDetails) }}
+                    </div>
+                </div>
+                <div id="pokemon-type-container" class="pokemon-type-container">
+                    <label for="pokemon-type-container" class="pokemon-type-title">Type: </label>
+                    <div class="pokemon-type-item" *ngFor="let type of pokemonDetails?.types">
+                        {{ type.type.name | titlecase }}
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="col-2">
-            <div class="pokemon-name">
-                {{ pokemon.name | titlecase }}
-            </div>
-            <div class="pokemon-stat-container">
-                <div class="pokemon-stat-item" *ngFor="let stat of pokemonDetails?.stats">
-                    {{ stat.stat.name | titlecase }} : {{ stat.base_stat }}
-                 </div>
-                 <div class="pokemon-stat-total">
-                     Total: {{ getTotal(pokemonDetails) }}
-                 </div>
-            </div>
-            <div id="pokemon-type-container" class="pokemon-type-container">
-                <label for="pokemon-type-container" class="pokemon-type-title">Type: </label>
-                <div class="pokemon-type-item" *ngFor="let type of pokemonDetails?.types">
-                    {{ type.type.name | titlecase }}
-                </div>
-            </div>
-        </div>
+        <div class="pokemon-details-close">Close</div>
     </div>
-    <div class="pokemon-details-close">Close</div>
 </div>
