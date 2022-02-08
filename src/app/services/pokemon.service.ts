@@ -26,8 +26,6 @@ export class PokemonService {
     if (sessionPokemon.length >= offset + limit)
       return of(sessionPokemon.slice(offset, offset + limit));
 
-    console.log('Not in session storage, fetching from API...');
-
     const fetchedPokemon = this.http
       .get(`${URL}/?limit=${limit}&offset=${offset}`, {
         headers: { 'Access-Control-Allow-Origin': '*' },
@@ -43,7 +41,6 @@ export class PokemonService {
           POKEMON_DATA_KEY,
           JSON.stringify([...sessionPokemon, ...pokemon])
         );
-        console.log('Session:', sessionStorage.getItem(POKEMON_DATA_KEY));
       },
     });
 

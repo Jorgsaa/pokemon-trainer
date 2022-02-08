@@ -96,7 +96,7 @@ export class UserService {
         )
         .subscribe({
           next: (user) => (this._user = user),
-          error: (error) => console.log('Error catching pokemon: ', error),
+          error: (error) => console.error('Error catching pokemon: ', error),
           complete: () =>
             localStorage.setItem(userStorageKey, JSON.stringify(this._user)),
         });
@@ -133,7 +133,7 @@ export class UserService {
         )
         .subscribe({
           next: (user) => (this._user = user),
-          error: (error) => console.log('Error catching pokemon: ', error),
+          error: (error) => console.error('Error catching pokemon: ', error),
           complete: () =>
             localStorage.setItem(userStorageKey, JSON.stringify(this._user)),
         });
@@ -174,7 +174,7 @@ export class UserService {
   public fetchContacts() {
     this.http.get<User[]>(apiUrl).subscribe({
       next: (users) => (this._users = users),
-      error: (error) => console.log('Error fetching contacts: ', error),
+      error: (error) => console.error('Error fetching contacts: ', error),
       complete: () => console.info('complete (fetched trainers)'),
     });
   }
