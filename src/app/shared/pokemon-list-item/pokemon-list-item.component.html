@@ -10,7 +10,7 @@
     <img class="pokemon-info-icon" src="assets/info.png" (click)="onInfoClicked.emit(pokemon)" />
     <div class="pokemon-name">{{ pokemon.name | titlecase }}</div>
     <img
-      [style.visibility]="hasObtained ? 'visible' : 'hidden'"
+      [style.visibility]="(hasObtained$ | async) ? 'visible' : 'hidden'"
       class="pokemon-pokeball-icon"
       src="assets/pokeball.png"
     />
