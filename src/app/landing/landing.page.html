@@ -3,8 +3,7 @@
         <img id="pokeball-logo" src="../../assets/pokeball.png" alt="Pokeball">
         <h1>Login</h1>
         <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)"> 
-            <label for="username">Username</label>
-            <input type="text" name="username" ngModel #username="ngModel" required id="username">
+            <input type="text" name="username" ngModel #username="ngModel" required id="username" placeholder="username">
             <button type="submit" [disabled]="loginForm.invalid" >Login</button>
         </form>
     </div>

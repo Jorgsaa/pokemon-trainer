@@ -12,6 +12,7 @@ main {
     background-color: gray;
     padding: 3vh 3vw;
     border-radius: 10px;
+    box-shadow: 10px 10px 10px hsl(0, 0%, 20%);
 }
 
 #pokeball-logo {

@@ -13,15 +13,21 @@
     background-color: gray;
     height: 15vh;
 
+    padding-left: 2.5vw;
+
     display: grid;
     grid-template-columns: 1fr auto auto auto;
+}
+
+h1, a, button {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 #app-page {
     flex-grow: 1;
 }
 
-a {
+a, button {
     padding: 10px;
     align-self: center;
     border: 1px solid;
